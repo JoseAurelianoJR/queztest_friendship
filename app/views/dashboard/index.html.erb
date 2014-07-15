@@ -2,3 +2,27 @@
 <ul>
   <li>Here you should include the friendship requests</li>
 </ul>
+<ul>
+    <li>Hi, you have <%= current_player.friendship_requests.count %></li>
+    <br/>
+    <% unless current_player.friendship_requests.nil? %>
+        <% current_player.friendship_requests.each do |friendship| %>
+            <li><b><%= friendship.player.name %></b> added you - 
+                <%= link_to "accept", accept_friendship_request_path(friendship), method: :put %>
+                -
+                <%= link_to "reject", reject_friendship_request_path(friendship), method: :delete %>
+            </li>
+        <% end %>  
+    <%end%>
+</ul>
+
+<ul>
+    <li>My Friends</li>
+    <br/>
+    <% unless current_player.friends.nil? %>
+        <% current_player.friends.each do |friend| %>
+            <li><b><%= friend.name %></b> 
+            </li>
+        <% end %>  
+    <%end%>
+</ul>
