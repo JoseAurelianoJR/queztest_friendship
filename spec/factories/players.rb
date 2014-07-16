@@ -3,5 +3,10 @@
 FactoryGirl.define do
   factory :player do
     name "MyString"
+    
+    factory :friend do
+        name "MyName"
+    end
   end
+
 end
